@@ -1,3 +1,4 @@
+
 import 'package:fit_record_app/feature/register_user/register_user_page.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +10,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
-      home: RegisterUserPage(),
-      
+      home: LoginPage(),
+
     );
   }
 }
