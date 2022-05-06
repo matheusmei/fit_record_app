@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import '../register_user/user_model.dart';
 
 import '../register_user/user_model.dart';
 

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class ButtomModel extends StatelessWidget {
   final String text;
   final Function() onPressed;
-  
 
   const ButtomModel({Key? key, required this.text, required this.onPressed})
       : super(key: key);
@@ -13,16 +12,18 @@ class ButtomModel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ink(
-      decoration: BoxDecoration(color: ColorsApp.maincolor3, borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+          color: ColorsApp.maincolor3, borderRadius: BorderRadius.circular(15)),
       child: InkWell(
         onTap: () {
           onPressed();
         },
         child: Container(
-          height: 45,
-          width: 270,
+          height: 52,
+          width: 225,
           alignment: Alignment.center,
-          child: Text(text,
+          child: Text(
+            text,
             textAlign: TextAlign.center,
             style: FontApp.mainfont20.copyWith(color: ColorsApp.maincolor4),
           ),
