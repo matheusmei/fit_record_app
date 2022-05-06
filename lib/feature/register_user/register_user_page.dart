@@ -1,4 +1,7 @@
+import 'package:bordered_text/bordered_text.dart';
+import 'package:fit_record_app/feature/register_user/register_user_controller.dart';
 import 'package:fit_record_app/feature/register_user/user_model.dart';
+import 'package:fit_record_app/widgets/buttom_model.dart';
 import 'package:fit_record_app/widgets/componation/colors_app.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:fit_record_app/widgets/componation/main_text_field.dart';
@@ -27,46 +30,97 @@ class RegisterUserPage extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MainTextField(
-                controller: firstnameController,
-                labelText: 'First Name',
-                choosedIcon: Icon(
-                  Icons.person,
-                  color: ColorsApp.maincolor5,
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    height: 220,
+                    width: 330,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage("lib/images/logo.png"),
+                      fit: BoxFit.contain,
+                    ))),
+                Padding(
+                  padding: EdgeInsets.zero,
+                  child: BorderedText(
+                    strokeWidth: 4.0,
+                    strokeColor: ColorsApp.maincolor2,
+                    child: Text("Fit Record", style: FontApp.logotitle),
+                  ),
                 ),
-                isObscure: false,
-              ),
-              MainTextField(
-                controller: lastnameController,
-                labelText: 'Last Name',
-                choosedIcon: Icon(
-                  Icons.person,
-                  color: ColorsApp.maincolor5,
+                MainTextField(
+                  controller: firstnameController,
+                  labelText: 'First Name',
+                  choosedIcon: Icon(
+                    Icons.person,
+                    color: ColorsApp.maincolor5,
+                  ),
+                  isObscure: false,
                 ),
-                isObscure: false,
-              ),
-              MainTextField(
-                controller: emailController,
-                labelText: 'email',
-                choosedIcon: Icon(
-                  Icons.email,
-                  color: ColorsApp.maincolor5,
+                MainTextField(
+                  controller: lastnameController,
+                  labelText: 'Last Name',
+                  choosedIcon: Icon(
+                    Icons.person,
+                    color: ColorsApp.maincolor5,
+                  ),
+                  isObscure: false,
                 ),
-                isObscure: false,
-              ),
-              MainTextField(
-                controller: passwordController,
-                labelText: 'Password',
-                choosedIcon: Icon(
-                  Icons.key,
-                  color: ColorsApp.maincolor5,
+                MainTextField(
+                  controller: emailController,
+                  labelText: 'email',
+                  choosedIcon: Icon(
+                    Icons.email,
+                    color: ColorsApp.maincolor5,
+                  ),
+                  isObscure: false,
                 ),
-                isObscure: true,
-              )
-            ],
+                MainTextField(
+                  controller: passwordController,
+                  labelText: 'Password',
+                  choosedIcon: Icon(
+                    Icons.key,
+                    color: ColorsApp.maincolor5,
+                  ),
+                  isObscure: true,
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                ButtomModel(
+                  text: 'Create',
+                  onPressed: () async {
+                    final isAllValid = emailController.text.isNotEmpty == true &&
+                        firstnameController.text.isNotEmpty == true &&
+                        lastnameController.text.isNotEmpty == true &&
+                        passwordController.text.isNotEmpty == true;
+          
+                    if (isAllValid) {
+                      return await registerUser(
+                        firstnameController.text,
+                        lastnameController.text,
+                        emailController.text.trim(),
+                        passwordController.text,
+                      );
+                    }
+                    if (emailController.text.isNotEmpty != true ||
+                        firstnameController.text.isNotEmpty != true ||
+                        lastnameController.text.isNotEmpty != true ||
+                        passwordController.text.isNotEmpty != true) {
+                      return showDialog(
+                        context: context,
+                        builder: (BuildContext context) => const AlertDialog(
+                          title: Text('Complete todos os Campos'),
+                        ),
+                      );
+                    }
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),
