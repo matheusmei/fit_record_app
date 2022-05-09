@@ -15,6 +15,8 @@ class RegisterUserPage extends StatelessWidget {
   final lastnameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final passwordConfirmationController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -89,6 +91,14 @@ class RegisterUserPage extends StatelessWidget {
                   ),
                   isObscure: true,
                 ),
+                MainTextField(
+                  controller: passwordConfirmationController,
+                  labelText: 'Password Confirmation',
+                  choosedIcon: Icon(
+                    Icons.key,
+                    color: ColorsApp.maincolor5,
+                  ),
+                ),
                 const SizedBox(
                   height: 60,
                 ),
@@ -99,7 +109,8 @@ class RegisterUserPage extends StatelessWidget {
                         emailController.text.isNotEmpty == true &&
                             firstnameController.text.isNotEmpty == true &&
                             lastnameController.text.isNotEmpty == true &&
-                            passwordController.text.isNotEmpty == true;
+                            passwordController.text.isNotEmpty == true &&
+                            passwordController == passwordConfirmationController;
 
                     if (isAllValid) {
                       return await registerUser(

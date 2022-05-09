@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "390633457464",
+    "project_id": "fit-record",
+    "storage_bucket": "fit-record.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390633457464:android:87447c6c7c8324e0d223cd",
+        "android_client_info": {
+          "package_name": "com.snowmanlabs.fit_record_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390633457464-likinm9dd046gl7lovp0104m5ir2eu66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwVlp2bJ4Qq_GL_P4lBlFssVH41ZUxZJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390633457464-likinm9dd046gl7lovp0104m5ir2eu66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
