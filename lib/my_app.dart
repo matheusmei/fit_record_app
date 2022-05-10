@@ -1,4 +1,5 @@
 import 'package:fit_record_app/feature/home/home_page.dart';
+import 'package:fit_record_app/feature/save%20training/muscular_group_collection.dart';
 import 'package:flutter/material.dart';
 import 'feature/login_pages/login_page.dart';
 
@@ -9,10 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
-      home: LoginPage(),
+      home: MusculaGroupCollection(),
 
     );
   }
