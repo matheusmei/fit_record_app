@@ -82,14 +82,26 @@ class _LoginPageState extends State<LoginPage> {
                         passwordController.text.isNotEmpty == true) {
                       return await loginUser(
                           emailController.text.trim(), passwordController.text).then((value) => Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage() )));
+
+                      return await loginUser(emailController.text.trim(),
+                              passwordController.text)
+                          .then(
+                        (value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        ),
+                      )
                     }
                     if (emailController.text.isNotEmpty != true &&
                         passwordController.text.isNotEmpty != true) {
                       return showDialog(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                                title: Text("Complete todos os Campos"),
-                              ));
+                        context: context,
+                        builder: (BuildContext context) => const AlertDialog(
+                          title: Text("Complete todos os Campos"),
+                        ),
+                      );
                     }
                   }),
               const SizedBox(
@@ -122,7 +134,6 @@ class _LoginPageState extends State<LoginPage> {
               )
             ],
           ),
-
         ),
           ),
     );

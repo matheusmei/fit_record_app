@@ -1,4 +1,5 @@
 import 'package:bordered_text/bordered_text.dart';
+import 'package:fit_record_app/feature/home/home_page.dart';
 import 'package:fit_record_app/feature/login_pages/login_page.dart';
 import 'package:fit_record_app/feature/register_user/register_user_controller.dart';
 import 'package:fit_record_app/feature/register_user/user_model.dart';
@@ -94,11 +95,12 @@ class RegisterUserPage extends StatelessWidget {
                 ButtomModel(
                   text: 'Create',
                   onPressed: () async {
-                    final isAllValid = emailController.text.isNotEmpty == true &&
-                        firstnameController.text.isNotEmpty == true &&
-                        lastnameController.text.isNotEmpty == true &&
-                        passwordController.text.isNotEmpty == true;
-          
+                    final isAllValid =
+                        emailController.text.isNotEmpty == true &&
+                            firstnameController.text.isNotEmpty == true &&
+                            lastnameController.text.isNotEmpty == true &&
+                            passwordController.text.isNotEmpty == true;
+
                     if (isAllValid) {
                       return await registerUser(
                         firstnameController.text,
@@ -106,7 +108,18 @@ class RegisterUserPage extends StatelessWidget {
                         emailController.text.trim(),
                         passwordController.text,
                       ).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage())));
+
+                      ).then(
+                        (value) => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        ),
+                      );
+
                     }
+
                     if (emailController.text.isNotEmpty != true ||
                         firstnameController.text.isNotEmpty != true ||
                         lastnameController.text.isNotEmpty != true ||

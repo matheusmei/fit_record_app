@@ -16,6 +16,7 @@ Future registerUser(
       'email': email,
       'password': password,
     });
+    print(response.data);
     return UserModel.fromJson(response.data as Map<String, dynamic>);
   } on DioError catch (e) {
     debugPrint("${e.response}");
