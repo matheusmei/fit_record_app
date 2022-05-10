@@ -10,18 +10,13 @@ class MusculaGroupCollection extends StatefulWidget {
 }
 
 class _MusculaGroupCollectionState extends State<MusculaGroupCollection> {
-  Future<QuerySnapshot<Map<String, dynamic>>> getMuscularList() async {
-    var muscularCollection = FirebaseFirestore.instance
-        .collection("muscular_group")
-        .where(FieldPath.documentId, whereIn: []).get();
-   return muscularCollection;
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: FutureBuilder<QuerySnapshot>(
-      future: getMuscularList(),
+        body: FutureBuilder<List<Map<String,dynamic>>>(
+      // future: getMuscularList(),
       builder: ((context, snapshot) {
         if (!snapshot.hasData && !snapshot.hasError) {
           return Center(
@@ -36,11 +31,11 @@ class _MusculaGroupCollectionState extends State<MusculaGroupCollection> {
             child: const Text("Erouu"),
           );
         } else {
-          final muscular = snapshot.data!.docs;
+          final muscular = snapshot.data!;
           return ListView.builder(
             itemCount: muscular.length,
             itemBuilder: ((context, index) {
-              return Text("${snapshot.data!.docs[index]}");
+              return Text("${snapshot.data![index]}");
             }),
           );
         }

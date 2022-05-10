@@ -120,14 +120,6 @@ class RegisterUserPage extends StatelessWidget {
                         passwordController.text,
                       ).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage())));
 
-                      ).then(
-                        (value) => Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
-                          ),
-                        ),
-                      );
 
                     }
 
