@@ -80,6 +80,9 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () async {
                     if (emailController.text.isNotEmpty == true &&
                         passwordController.text.isNotEmpty == true) {
+                      return await loginUser(
+                          emailController.text.trim(), passwordController.text).then((value) => Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage() )));
+
                       return await loginUser(emailController.text.trim(),
                               passwordController.text)
                           .then(
@@ -89,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context) => const HomePage(),
                           ),
                         ),
-                      );
+                      )
                     }
                     if (emailController.text.isNotEmpty != true &&
                         passwordController.text.isNotEmpty != true) {
@@ -132,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
-      ),
+          ),
     );
   }
 }

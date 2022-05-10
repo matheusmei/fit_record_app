@@ -107,6 +107,8 @@ class RegisterUserPage extends StatelessWidget {
                         lastnameController.text,
                         emailController.text.trim(),
                         passwordController.text,
+                      ).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage())));
+
                       ).then(
                         (value) => Navigator.pushReplacement(
                           context,
@@ -115,6 +117,7 @@ class RegisterUserPage extends StatelessWidget {
                           ),
                         ),
                       );
+
                     }
 
                     if (emailController.text.isNotEmpty != true ||
