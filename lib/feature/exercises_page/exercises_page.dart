@@ -72,7 +72,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                             print(snapshot.data![index]);
                             await getMuscularList();
                           },
-                          cardChidren: [
+                          cardChidren: const [
                             Text("sodifuhdasofidsuhfdsoifudgs"),
                           ],
                         );
