@@ -1,4 +1,5 @@
 import 'package:bordered_text/bordered_text.dart';
+import 'package:fit_record_app/feature/login_pages/login_page.dart';
 import 'package:fit_record_app/feature/register_user/register_user_controller.dart';
 import 'package:fit_record_app/feature/register_user/user_model.dart';
 import 'package:fit_record_app/widgets/buttom_model.dart';
@@ -104,7 +105,7 @@ class RegisterUserPage extends StatelessWidget {
                         lastnameController.text,
                         emailController.text.trim(),
                         passwordController.text,
-                      );
+                      ).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage())));
                     }
                     if (emailController.text.isNotEmpty != true ||
                         firstnameController.text.isNotEmpty != true ||

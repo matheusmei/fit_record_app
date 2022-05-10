@@ -1,4 +1,6 @@
+import 'package:fit_record_app/feature/exercises_page/exercises_page.dart';
 import 'package:fit_record_app/feature/home/home_page.dart';
+import 'package:fit_record_app/feature/training_mode_page/training_mode_page.dart';
 import 'package:flutter/material.dart';
 import 'feature/login_pages/login_page.dart';
 
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
-      home: LoginPage(),
+      home: ExercisesPage(),
 
     );
   }
