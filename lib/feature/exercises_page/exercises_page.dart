@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fit_record_app/widgets/componation/exercices_card.dart';
 import 'package:fit_record_app/widgets/exercises_card_2.dart';
@@ -23,10 +25,24 @@ class _ExercisesPageState extends State<ExercisesPage> {
 
     return parsedList;
   }
+Future<List<String>> getExerciseList() async {
+final exerciseCollection = await FirebaseFirestore.instance
+.collection("muscular_group").get();
+
+final exerciseGroup = exerciseCollection.docs;
+
+final exerciseList = exerciseGroup.map((e) => e.data).toList();
+
+return exerciseList;
+
+
+}
+
 
   @override
   void initState() {
     getMuscularList();
+    getExerciseList();
     super.initState();
   }
 
@@ -72,8 +88,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
                             print(snapshot.data![index]);
                             await getMuscularList();
                           },
-                          cardChidren: const [
-                            Text("sodifuhdasofidsuhfdsoifudgs"),
+                          cardChidren:  [
+                           //Colocar a lista de exercise
                           ],
                         );
                       } else {
