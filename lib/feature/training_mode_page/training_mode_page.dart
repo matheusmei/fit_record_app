@@ -132,6 +132,7 @@ class _TrainingModePageState extends State<TrainingModePage> {
                             builder: (context) => ExercisesPage()));
                     },
                     icon: Icon(
+                      
                       Icons.arrow_back_rounded,
                       color: ColorsApp.maincolor3,
                       size: 50,

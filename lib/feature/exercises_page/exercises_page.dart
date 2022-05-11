@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fit_record_app/widgets/componation/exercices_card.dart';
-import 'package:fit_record_app/widgets/exercises_card_2.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/componation/colors_app.dart';
