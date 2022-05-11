@@ -1,3 +1,4 @@
+import 'package:fit_record_app/feature/exercises_page/muscular_group_model.dart';
 import 'package:fit_record_app/widgets/componation/colors_app.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:flutter/material.dart';
@@ -42,12 +43,13 @@ class ExercisesCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: ExpansionTile(
-                      title: Text(muscularGroup,
-                          textAlign: TextAlign.center,
-                          style: FontApp.mainfont30.copyWith(
-                            color: ColorsApp.maincolor4,
-                          )),
-                      children: cardChidren),
+                    title: Text(muscularGroup,
+                        textAlign: TextAlign.center,
+                        style: FontApp.mainfont30.copyWith(
+                          color: ColorsApp.maincolor4,
+                        )),
+                    children: cardChidren,
+                  ),
                 ),
               ),
             )),
