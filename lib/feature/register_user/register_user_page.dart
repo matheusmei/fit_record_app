@@ -1,3 +1,5 @@
+
+
 import 'package:bordered_text/bordered_text.dart';
 import 'package:fit_record_app/feature/home/home_page.dart';
 import 'package:fit_record_app/feature/login_pages/login_page.dart';
@@ -5,6 +7,7 @@ import 'package:fit_record_app/feature/register_user/register_user_controller.da
 import 'package:fit_record_app/feature/register_user/user_model.dart';
 import 'package:fit_record_app/widgets/buttom_model.dart';
 import 'package:fit_record_app/widgets/componation/colors_app.dart';
+import 'package:fit_record_app/widgets/componation/custom_dialog.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:fit_record_app/widgets/componation/main_text_field.dart';
 import 'package:flutter/material.dart';
@@ -103,14 +106,17 @@ class RegisterUserPage extends StatelessWidget {
                   height: 60,
                 ),
                 ButtomModel(
-                  text: 'Create',
+                  text: 'Cadastrar',
                   onPressed: () async {
                     final isAllValid =
                         emailController.text.isNotEmpty == true &&
                             firstnameController.text.isNotEmpty == true &&
                             lastnameController.text.isNotEmpty == true &&
                             passwordController.text.isNotEmpty == true &&
-                            passwordController == passwordConfirmationController;
+                            passwordConfirmationController.text.isNotEmpty ==
+                                true &&
+                            passwordConfirmationController ==
+                                passwordController;
 
                     if (isAllValid) {
                       return await registerUser(
@@ -118,20 +124,32 @@ class RegisterUserPage extends StatelessWidget {
                         lastnameController.text,
                         emailController.text.trim(),
                         passwordController.text,
-                      ).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage())));
-
-
+                      ).then((value) => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage())));
                     }
 
                     if (emailController.text.isNotEmpty != true ||
                         firstnameController.text.isNotEmpty != true ||
                         lastnameController.text.isNotEmpty != true ||
                         passwordController.text.isNotEmpty != true) {
-                      return showDialog(
-                        context: context,
-                        builder: (BuildContext context) => const AlertDialog(
-                          title: Text('Complete todos os Campos'),
-                        ),
+                      return CustomDialog(
+                        context,
+                        "Erro",
+                        "Todos campos precisam ser preenchidos",
+                        "OK",
+                        () => Navigator.pop(context),
+                      );
+                    }
+                    if (passwordController.text !=
+                        passwordConfirmationController.text) {
+                      return CustomDialog(
+                        context,
+                        "Erro",
+                        "As senhas não conferem",
+                        "OK",
+                        () => Navigator.pop(context),
                       );
                     }
                   },

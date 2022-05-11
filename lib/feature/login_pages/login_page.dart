@@ -4,6 +4,7 @@ import 'package:fit_record_app/feature/login_pages/user_login_model.dart';
 import 'package:fit_record_app/feature/register_user/register_user_page.dart';
 import 'package:fit_record_app/widgets/buttom_model.dart';
 import 'package:fit_record_app/widgets/componation/colors_app.dart';
+import 'package:fit_record_app/widgets/componation/custom_dialog.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:fit_record_app/widgets/componation/main_text_field.dart';
 import 'package:flutter/material.dart';
@@ -39,14 +40,16 @@ class _LoginPageState extends State<LoginPage> {
                 height: 80,
               ),
               Container(
-                  height: 220,
-                  width: 330,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
+                height: 220,
+                width: 330,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
                     image: AssetImage("lib/images/logo.png"),
                     fit: BoxFit.contain,
-                  ))),
+                  ),
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.zero,
                 child: BorderedText(
@@ -59,19 +62,21 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               MainTextField(
-                  controller: emailController,
-                  labelText: "E-mail",
-                  choosedIcon: Icon(
-                    Icons.email,
-                    color: ColorsApp.maincolor3,
-                  )),
+                controller: emailController,
+                labelText: "E-mail",
+                choosedIcon: Icon(
+                  Icons.email,
+                  color: ColorsApp.maincolor3,
+                ),
+              ),
               MainTextField(
-                  controller: passwordController,
-                  labelText: "Senha",
-                  choosedIcon: Icon(
-                    Icons.key,
-                    color: ColorsApp.maincolor3,
-                  )),
+                controller: passwordController,
+                labelText: "Senha",
+                choosedIcon: Icon(
+                  Icons.key,
+                  color: ColorsApp.maincolor3,
+                ),
+              ),
               const SizedBox(
                 height: 50,
               ),
@@ -82,17 +87,24 @@ class _LoginPageState extends State<LoginPage> {
                         passwordController.text.isNotEmpty == true) {
                       return await loginUser(emailController.text.trim(),
                               passwordController.text)
-                          .then((value) => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomePage())));
+                          .then(
+                        (value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        ),
+                      );
                     }
                     if (emailController.text.isNotEmpty != true &&
                         passwordController.text.isNotEmpty != true) {
-                      return showDialog(
-                        context: context,
-                        builder: (BuildContext context) => const AlertDialog(
-                          title: Text("Complete todos os Campos"),
+                      return CustomDialog(
+                        context,
+                        "Erro",
+                        "Complete todos os campos",
+                        "OK",
+                        () => Navigator.pop(
+                          context,
                         ),
                       );
                     }

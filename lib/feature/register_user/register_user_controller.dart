@@ -25,7 +25,10 @@ Future registerUser(
     if (response.statusCode == 201) {
       final userResponse = UserModel.fromJson(response.data);
       userModel = userResponse;
-      FirebaseFirestore.instance.collection("user").doc(userModel.sId).update(
+      FirebaseFirestore.instance
+      .collection("user")
+      .doc(userModel.sId)
+      .update(
         {
           'id': userModel.sId,
           'first_name': userModel.firstName,
@@ -34,6 +37,7 @@ Future registerUser(
         },
       );
       return userResponse;
+      
     }
 
     return UserModel.fromJson(response.data as Map<String, dynamic>);
