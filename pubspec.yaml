@@ -41,13 +41,9 @@ dependencies:
 
   cloud_firestore: ^3.1.14
   firebase_core: ^1.16.0
-
   expansion_tile_card: ^2.0.0
 
 
-  cloud_firestore: ^3.1.14
-  firebase_core: ^1.16.0
-  expansion_tile_card: ^2.0.0
 
 
 dev_dependencies:

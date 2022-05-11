@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fit_record_app/feature/exercises_page/exercise_model.dart';
 import 'package:fit_record_app/widgets/componation/exercices_card.dart';
 import 'package:fit_record_app/widgets/exercises_card_2.dart';
 import 'package:flutter/material.dart';
@@ -25,19 +26,17 @@ class _ExercisesPageState extends State<ExercisesPage> {
 
     return parsedList;
   }
-Future<List<String>> getExerciseList() async {
-final exerciseCollection = await FirebaseFirestore.instance
-.collection("muscular_group").get();
 
-final exerciseGroup = exerciseCollection.docs;
+  Future<List<Map<String, dynamic> Function()>> getExerciseList() async {
+    final exerciseCollection =
+        await FirebaseFirestore.instance.collection("muscular_group").get();
 
-final exerciseList = exerciseGroup.map((e) => e.data).toList();
+    final exerciseGroup = exerciseCollection.docs;
 
-return exerciseList;
+    final exerciseList = exerciseGroup.map((e) => e.data).toList();
 
-
-}
-
+    return exerciseList;
+  }
 
   @override
   void initState() {
@@ -88,8 +87,20 @@ return exerciseList;
                             print(snapshot.data![index]);
                             await getMuscularList();
                           },
-                          cardChidren:  [
-                           //Colocar a lista de exercise
+                          cardChidren: [
+                            ListView.builder(
+                                itemCount: snapshot.data!.length,
+                                itemBuilder: (context, index) {
+                                  if (snapshot.hasData && !snapshot.hasError) {
+                                    return MuscularGroupModel(
+                                      exercises: snapshot.data![index],
+                                    );
+                                  } else {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                })
                           ],
                         );
                       } else {
