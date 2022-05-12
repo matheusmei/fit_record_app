@@ -9,6 +9,7 @@ class ExercisesCard extends StatelessWidget {
   final AssetImage muscularGroupPhoto;
   final Function() onPressed;
   final List<Widget> cardChidren;
+  
 
   const ExercisesCard(
       {Key? key,
