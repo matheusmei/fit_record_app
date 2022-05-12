@@ -10,6 +10,7 @@ import 'package:fit_record_app/feature/login_pages/user_login_model.dart';
 
 import 'package:fit_record_app/feature/training_mode_page/training_mode_page.dart';
 import 'package:flutter/material.dart';
+import 'feature/exercises_page/exercises_page2.dart';
 import 'feature/login_pages/login_page.dart';
 import 'feature/login_pages/login_page.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
-      home: ExercisesPage(),
+      home: ExercisesPage2(),
     );
   }
 }

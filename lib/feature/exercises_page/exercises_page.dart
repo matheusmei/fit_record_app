@@ -80,6 +80,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     itemBuilder: (context, index) {
                       if (muscle.hasData && !muscle.hasError) {
                         return ExercisesCard(
+                          onExpansionChanged: (newvalue) {},
                           muscularGroup: muscle.data![index],
                           muscularGroupPhoto: AssetImage(
                               "lib/images/${muscle.data![index]}.card.jpg"),
@@ -119,9 +120,11 @@ class _ExercisesPageState extends State<ExercisesPage> {
                                               )),
                                           trailing: Checkbox(
                                             onChanged: (newValue) {
-                                              print(newValue); 
-                                              exerciseMap["selected"] =
-                                                  newValue;
+                                              print(exerciseMap["selected"]);
+                                              setState(() {
+                                                exerciseMap["selected"] =
+                                                    !exerciseMap["selected"];
+                                              });
                                             },
                                             value: exerciseMap["selected"],
                                           ));
