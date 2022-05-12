@@ -26,7 +26,7 @@ Future registerUser(
       final userResponse = UserModel.fromJson(response.data);
       userModel = userResponse;
       FirebaseFirestore.instance
-      .collection("user")
+      .collection("users")
       .doc(userModel.sId)
       .update(
         {

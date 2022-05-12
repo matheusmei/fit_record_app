@@ -1,4 +1,5 @@
 import 'package:bordered_text/bordered_text.dart';
+import 'package:fit_record_app/feature/training_mode_page/training_mode_page.dart';
 import 'package:fit_record_app/widgets/buttom_model.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:flutter/material.dart';
@@ -140,9 +141,18 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   const Spacer(),
                   Expanded(
-                      flex: 3,
-                      child:
-                          ButtomModel(text: "Let's Do It!", onPressed: () {})),
+                    flex: 3,
+                    child: ButtomModel(
+                        text: "Let's Do It!",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TrainingModePage(),
+                            ),
+                          );
+                        }),
+                  ),
                   const Spacer(),
                 ],
               ),

@@ -27,7 +27,7 @@ class _MainTextFieldState extends State<MainTextField> {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: TextField(
-        style: FontApp.mainfont16.copyWith(color: ColorsApp.maincolor3),
+        style: FontApp.mainfont16.copyWith(color: ColorsApp.maincolor4),
         cursorColor: ColorsApp.maincolor5,
         controller: widget.controller,
         obscureText: widget.isObscure,

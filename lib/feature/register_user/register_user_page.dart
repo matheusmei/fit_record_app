@@ -1,5 +1,3 @@
-
-
 import 'package:bordered_text/bordered_text.dart';
 import 'package:fit_record_app/feature/home/home_page.dart';
 import 'package:fit_record_app/feature/login_pages/login_page.dart';
@@ -101,6 +99,7 @@ class RegisterUserPage extends StatelessWidget {
                     Icons.key,
                     color: ColorsApp.maincolor5,
                   ),
+                  isObscure: true,
                 ),
                 const SizedBox(
                   height: 60,
@@ -124,10 +123,14 @@ class RegisterUserPage extends StatelessWidget {
                         lastnameController.text,
                         emailController.text.trim(),
                         passwordController.text,
-                      ).then((value) => Navigator.pushReplacement(
+                      ).then(
+                        (value) => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const LoginPage())));
+                            builder: (context) => const LoginPage(),
+                          ),
+                        ),
+                      );
                     }
 
                     if (emailController.text.isNotEmpty != true ||

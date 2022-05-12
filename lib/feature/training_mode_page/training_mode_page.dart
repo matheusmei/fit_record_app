@@ -1,4 +1,5 @@
 import 'package:fit_record_app/feature/exercises_page/exercises_page.dart';
+import 'package:fit_record_app/feature/home/home_page.dart';
 import 'package:fit_record_app/feature/informations_training_pages/cardio_information_page.dart';
 import 'package:fit_record_app/feature/informations_training_pages/hipertrofy_information_page.dart';
 import 'package:fit_record_app/feature/informations_training_pages/resistence_information_page.dart';
@@ -145,7 +146,7 @@ class _TrainingModePageState extends State<TrainingModePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ExercisesPage()));
+                                builder: (context) => const HomePage()));
                       },
                       icon: Icon(
                         Icons.arrow_back_rounded,
