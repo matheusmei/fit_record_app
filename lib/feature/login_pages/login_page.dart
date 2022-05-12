@@ -8,6 +8,7 @@ import 'package:fit_record_app/widgets/componation/custom_dialog.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:fit_record_app/widgets/componation/main_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import '../register_user/register_user_page.dart';
 
@@ -21,6 +22,18 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late Box<String> saveTrainingBox;
+
+  @override
+  void initState() {
+    setState(
+      () {
+        saveTrainingBox = Hive.box("userTrainingBox");
+        super.initState();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -86,7 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                     if (emailController.text.isNotEmpty == true &&
                         passwordController.text.isNotEmpty == true) {
                       return await loginUser(emailController.text.trim(),
-                              passwordController.text)
+                              passwordController.text,
+                              context,
+                              saveTrainingBox)
                           .then(
                         (value) => Navigator.push(
                           context,
@@ -96,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       );
                     }
-                    if (emailController.text.isNotEmpty != true &&
+                    if (emailController.text.isNotEmpty != true ||
                         passwordController.text.isNotEmpty != true) {
                       return CustomDialog(
                         context,

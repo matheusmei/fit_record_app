@@ -10,12 +10,13 @@
 // }
 
 // class _SaveTrainingPageState extends State<SaveTrainingPage> {
-//   final currentUser = UserModel.fromJson(response.data)
+// currentuSER
 //   final userTraining = FirebaseFirestore.instance.collection("user");
 //   Stream<List<UserModel>> userSaveTraining() {
-// return FirebaseFirestore.instance.collection("users").doc(
 
-// )
+// return FirebaseFirestore.instance.collection("users").doc(userModel.sId)
+
+
 
 
 

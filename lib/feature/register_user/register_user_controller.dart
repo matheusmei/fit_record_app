@@ -28,7 +28,7 @@ Future registerUser(
       FirebaseFirestore.instance
       .collection("users")
       .doc(userModel.sId)
-      .update(
+      .set(
         {
           'id': userModel.sId,
           'first_name': userModel.firstName,

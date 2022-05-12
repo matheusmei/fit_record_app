@@ -114,8 +114,8 @@ class RegisterUserPage extends StatelessWidget {
                             passwordController.text.isNotEmpty == true &&
                             passwordConfirmationController.text.isNotEmpty ==
                                 true &&
-                            passwordConfirmationController ==
-                                passwordController;
+                            passwordConfirmationController.text ==
+                                passwordController.text;
 
                     if (isAllValid) {
                       return await registerUser(
@@ -124,7 +124,7 @@ class RegisterUserPage extends StatelessWidget {
                         emailController.text.trim(),
                         passwordController.text,
                       ).then(
-                        (value) => Navigator.push(
+                        (value) => Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const LoginPage(),

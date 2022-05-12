@@ -4,15 +4,15 @@ import 'colors_app.dart';
 import 'font_app.dart';
 
 class MainTextField extends StatefulWidget {
-  final TextEditingController controller;
-  final String labelText;
-  final Icon choosedIcon;
+  final TextEditingController? controller;
+  final String? labelText;
+  final Icon? choosedIcon;
   final bool isObscure;
 
   const MainTextField(
-      {required this.controller,
-      required this.labelText,
-      required this.choosedIcon,
+      {this.controller,
+      this.labelText,
+      this.choosedIcon,
       this.isObscure = false,
       Key? key})
       : super(key: key);
