@@ -15,9 +15,7 @@ class ButtomModel extends StatelessWidget {
       decoration: BoxDecoration(
           color: ColorsApp.maincolor3, borderRadius: BorderRadius.circular(15)),
       child: InkWell(
-        onTap: () {
-          onPressed();
-        },
+        onTap: onPressed,
         child: Container(
           height: 52,
           width: 225,

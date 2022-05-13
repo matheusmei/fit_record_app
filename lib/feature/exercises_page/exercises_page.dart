@@ -9,7 +9,6 @@ import '../../widgets/componation/colors_app.dart';
 
 class ExercisesPage extends StatefulWidget {
   const ExercisesPage({Key? key}) : super(key: key);
-
   @override
   State<ExercisesPage> createState() => _ExercisesPageState();
 }
@@ -58,20 +57,20 @@ class _ExercisesPageState extends State<ExercisesPage> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Center(
-            child: FutureBuilder<List<String>>(
-              future: getMuscularList(),
-              builder: (context, muscle) {
-                if (muscle.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
+                FutureBuilder<List<String>>(
+                  future: getMuscularList(),
+                  builder: (context, muscle) {
+                    if (muscle.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
 
-                if (muscle.hasError) {
-                  return const Center(
-                    child: Text("DEU RUIM"),
-                  );
-                }
+                    if (muscle.hasError) {
+                      return const Center(
+                        child: Text("DEU RUIM"),
+                      );
+                    }
 
                 return ListView.builder(
                     physics: const AlwaysScrollableScrollPhysics(),
@@ -133,19 +132,40 @@ class _ExercisesPageState extends State<ExercisesPage> {
                                         child: CircularProgressIndicator(),
                                       );
                                     }
+
+                                    if (exercise.hasError) {
+                                      return const Center(
+                                        child: Text("DEU RUIM"),
+                                      );
+                                    }
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: exercise.data!.length,
+                                      itemBuilder: (context, index) {
+                                        if (exercise.hasData &&
+                                            !exercise.hasError) {
+                                          return Text(
+                                              exercise.data![index]["name"]);
+                                        } else {
+                                          return const Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+                                        }
+                                      },
+                                    );
                                   },
-                                );
-                              },
-                            ),
-                          ],
-                        );
-                      } else {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-                    });
-              },
+                                ),
+                              ],
+                            );
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        });
+                  },
+                ),
+              ],
             ),
           ),
         ),

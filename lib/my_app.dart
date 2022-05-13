@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
       home: ExercisesPage2(),
+
     );
   }
 }
