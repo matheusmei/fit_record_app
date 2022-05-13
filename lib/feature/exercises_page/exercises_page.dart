@@ -1,9 +1,9 @@
+import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fit_record_app/feature/exercises_page/exercise_model.dart';
 import 'package:fit_record_app/feature/exercises_page/muscular_group_model.dart';
 import 'package:fit_record_app/widgets/componation/exercices_card.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
-import 'package:fit_record_app/widgets/componation/main_text_field.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/componation/colors_app.dart';
 
@@ -72,25 +72,62 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       );
                     }
 
-                    return ListView.builder(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: muscle.data!.length, //! fix this
-                        itemBuilder: (context, index) {
-                          if (muscle.hasData && !muscle.hasError) {
-                            return ExercisesCard(
-                              muscularGroup: muscle.data![index],
-                              muscularGroupPhoto: AssetImage(
-                                  "lib/images/${muscle.data![index]}.card.jpg"),
-                              onPressed: () async {
-                                await getMuscularList();
-                              },
-                              cardChidren: [
-                                FutureBuilder<List<Map<String, dynamic>>>(
-                                  future: getExerciseList(muscle.data![index]),
-                                  builder: (context, exercise) {
-                                    if (exercise.connectionState ==
-                                        ConnectionState.waiting) {
+                return ListView.builder(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: muscle.data!.length, //! fix this
+                    itemBuilder: (context, index) {
+                      if (muscle.hasData && !muscle.hasError) {
+                        return ExercisesCard(
+                          onExpansionChanged: (newvalue) {},
+                          muscularGroup: muscle.data![index],
+                          muscularGroupPhoto: AssetImage(
+                              "lib/images/${muscle.data![index]}.card.jpg"),
+                          onPressed: () async {
+                            await getMuscularList();
+                          },
+                          cardChidren: [
+                            FutureBuilder<List<Map<String, dynamic>>>(
+                              future: getExerciseList(muscle.data![index]),
+                              builder: (context, exercise) {
+                                if (exercise.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+
+                                if (exercise.hasError) {
+                                  return const Center(
+                                    child: Text("DEU RUIM"),
+                                  );
+                                }
+                                return ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: exercise.data!.length,
+                                  itemBuilder: (context, index) {
+                                    if (exercise.hasData &&
+                                        !exercise.hasError) {
+                                      var exerciseMap = exercise.data![index];
+
+                                      return ListTile(
+                                          title: Text(
+                                              exercise.data![index]["name"],
+                                              style:
+                                                  FontApp.mainfont16.copyWith(
+                                                color: ColorsApp.maincolor4,
+                                              )),
+                                          trailing: Checkbox(
+                                            onChanged: (newValue) {
+                                              print(exerciseMap["selected"]);
+                                              setState(() {
+                                                exerciseMap["selected"] =
+                                                    !exerciseMap["selected"];
+                                              });
+                                            },
+                                            value: exerciseMap["selected"],
+                                          ));
+                                    } else {
                                       return const Center(
                                         child: CircularProgressIndicator(),
                                       );

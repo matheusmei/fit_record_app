@@ -9,13 +9,15 @@ class ExercisesCard extends StatelessWidget {
   final AssetImage muscularGroupPhoto;
   final Function() onPressed;
   final List<Widget> cardChidren;
+  final Function(bool) onExpansionChanged;
 
   const ExercisesCard(
       {Key? key,
       required this.muscularGroup,
       required this.muscularGroupPhoto,
       required this.onPressed,
-      required this.cardChidren})
+      required this.cardChidren,
+      required this.onExpansionChanged})
       : super(key: key);
 
   @override
@@ -43,6 +45,7 @@ class ExercisesCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: ExpansionTile(
+                    onExpansionChanged: onExpansionChanged,
                     title: Text(muscularGroup,
                         textAlign: TextAlign.center,
                         style: FontApp.mainfont30.copyWith(
