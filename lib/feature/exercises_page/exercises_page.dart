@@ -1,7 +1,9 @@
+import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fit_record_app/feature/exercises_page/exercise_model.dart';
 import 'package:fit_record_app/feature/exercises_page/muscular_group_model.dart';
 import 'package:fit_record_app/widgets/componation/exercices_card.dart';
+import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/componation/colors_app.dart';
 
@@ -15,21 +17,17 @@ class ExercisesPage extends StatefulWidget {
 class _ExercisesPageState extends State<ExercisesPage> {
   Future<List<String>> getMuscularList() async {
     final muscularCollection =
-        await FirebaseFirestore.instance
-        .collection("muscular_group")
-        .get();
+        await FirebaseFirestore.instance.collection("muscular_group").get();
 
     final muscularGroups = muscularCollection.docs;
 
-    final parsedList = muscularGroups
-    .map((document) => document.id)
-    .toList();
+    final parsedList = muscularGroups.map((document) => document.id).toList();
 
     return parsedList;
   }
 
   final currentMuscle = FirebaseFirestore.instance.collection("muscular_group");
-  Future<List<Map<String, dynamic> >> getExerciseList(
+  Future<List<Map<String, dynamic>>> getExerciseList(
       String currentMuscle) async {
     final exerciseCollection = await FirebaseFirestore.instance
         .collection("muscular_group")
@@ -82,15 +80,15 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     itemBuilder: (context, index) {
                       if (muscle.hasData && !muscle.hasError) {
                         return ExercisesCard(
+                          onExpansionChanged: (newvalue) {},
                           muscularGroup: muscle.data![index],
                           muscularGroupPhoto: AssetImage(
                               "lib/images/${muscle.data![index]}.card.jpg"),
-                          onPressed: () async {                           
+                          onPressed: () async {
                             await getMuscularList();
                           },
                           cardChidren: [
-                            FutureBuilder<
-                                List<Map<String, dynamic> >>(
+                            FutureBuilder<List<Map<String, dynamic>>>(
                               future: getExerciseList(muscle.data![index]),
                               builder: (context, exercise) {
                                 if (exercise.connectionState ==
@@ -106,13 +104,30 @@ class _ExercisesPageState extends State<ExercisesPage> {
                                   );
                                 }
                                 return ListView.builder(
-                                  shrinkWrap: true ,
+                                  shrinkWrap: true,
                                   itemCount: exercise.data!.length,
                                   itemBuilder: (context, index) {
                                     if (exercise.hasData &&
                                         !exercise.hasError) {
-                                      return Text(exercise.data![index]["name"]);
-                                      
+                                      var exerciseMap = exercise.data![index];
+
+                                      return ListTile(
+                                          title: Text(
+                                              exercise.data![index]["name"],
+                                              style:
+                                                  FontApp.mainfont16.copyWith(
+                                                color: ColorsApp.maincolor4,
+                                              )),
+                                          trailing: Checkbox(
+                                            onChanged: (newValue) {
+                                              print(exerciseMap["selected"]);
+                                              setState(() {
+                                                exerciseMap["selected"] =
+                                                    !exerciseMap["selected"];
+                                              });
+                                            },
+                                            value: exerciseMap["selected"],
+                                          ));
                                     } else {
                                       return const Center(
                                         child: CircularProgressIndicator(),
