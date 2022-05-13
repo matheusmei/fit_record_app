@@ -1,5 +1,6 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:fit_record_app/feature/exercises_page/exercises_page.dart';
+import 'package:fit_record_app/feature/exercises_page/exercises_page2.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/componation/colors_app.dart';
 import '../../widgets/componation/font_app.dart';
@@ -217,7 +218,7 @@ class _StrenghtInformationPageState extends State<StrenghtInformationPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ExercisesPage()));
+                                    builder: (context) => ExercisesPage2()));
                           },
                           icon: Icon(Icons.play_circle_fill_rounded, color: ColorsApp.maincolor3, size: 50,)),
                           const SizedBox(width: 12,)

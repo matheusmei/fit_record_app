@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FontApp{
 static TextStyle logotitle = GoogleFonts.boogaloo(fontSize: 50, color: ColorsApp.maincolor4);
+static TextStyle logotitle2 = GoogleFonts.boogaloo(fontSize: 30, color: ColorsApp.maincolor4);
 static TextStyle mainfont16 = GoogleFonts.openSans(fontSize: 16, fontWeight: FontWeight.bold);
 static TextStyle mainfont18 = GoogleFonts.openSans(fontSize: 18, fontWeight: FontWeight.bold);
 static TextStyle mainfont20 = GoogleFonts.openSans(fontSize: 20, fontWeight: FontWeight.bold);
