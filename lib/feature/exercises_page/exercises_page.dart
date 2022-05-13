@@ -57,38 +57,6 @@ class _ExercisesPageState extends State<ExercisesPage> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Center(
-            child: Column(
-              children: [
-                Title(
-                  color: ColorsApp.maincolor3,
-                  child: const Text(
-                    "Treino de Força",
-                  ),
-                ),
-                const MainTextField(
-                  labelText: "Nome do Treino",
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "N. de Séries",
-                      style: FontApp.mainfont16
-                          .copyWith(color: ColorsApp.maincolor3),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "N. de Repetições",
-                      style: FontApp.mainfont16
-                          .copyWith(color: ColorsApp.maincolor3),
-                    ),
-                  ],
-                ),
                 FutureBuilder<List<String>>(
                   future: getMuscularList(),
                   builder: (context, muscle) {
