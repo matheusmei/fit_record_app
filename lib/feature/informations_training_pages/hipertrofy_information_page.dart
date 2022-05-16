@@ -44,7 +44,7 @@ class _HipertrofyInformationPageState extends State<HipertrofyInformationPage> {
                 ),
                 Row(
                   children: [
-                                      IconButton(
+                    IconButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
@@ -69,7 +69,8 @@ class _HipertrofyInformationPageState extends State<HipertrofyInformationPage> {
                     strokeWidth: 1.0,
                     strokeColor: ColorsApp.maincolor3,
                     child: Text("Hipertrofia",
-                        style: FontApp.mainfont45.copyWith(color: Colors.transparent)),
+                        style: FontApp.mainfont45
+                            .copyWith(color: Colors.transparent)),
                   ),
                 ),
                 const SizedBox(
@@ -94,42 +95,61 @@ class _HipertrofyInformationPageState extends State<HipertrofyInformationPage> {
                               style: FontApp.mainfont24.copyWith(
                                 color: ColorsApp.maincolor4,
                               )),
-                            RichText(
-                              text: TextSpan(text: "de",
-                                  style: FontApp.mainfont22.copyWith(
-                                    color: ColorsApp.maincolor4,),
-                                  children: <TextSpan>[
-                                    TextSpan(text: "recrutar", style: FontApp.mainfont30.copyWith(color: ColorsApp.maincolor3, fontWeight: FontWeight.bold)),
-                                    TextSpan(text: "mais", style: FontApp.mainfont22.copyWith(color: ColorsApp.maincolor4))
-                                  ]),
-                            ),
+                          RichText(
+                            text: TextSpan(
+                                text: "de",
+                                style: FontApp.mainfont22.copyWith(
+                                  color: ColorsApp.maincolor4,
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: "recrutar",
+                                      style: FontApp.mainfont30.copyWith(
+                                          color: ColorsApp.maincolor3,
+                                          fontWeight: FontWeight.bold)),
+                                  TextSpan(
+                                      text: "mais",
+                                      style: FontApp.mainfont22.copyWith(
+                                          color: ColorsApp.maincolor4))
+                                ]),
+                          ),
                           Text("fibras musculares,",
                               textAlign: TextAlign.center,
                               style: FontApp.mainfont24.copyWith(
                                 color: ColorsApp.maincolor4,
                               )),
-                            RichText(
-                              text: TextSpan(text: "acarretando",
-                                  style: FontApp.mainfont22.copyWith(
-                                    color: ColorsApp.maincolor4,),
-                                  children: <TextSpan>[
-                                    TextSpan(text: "maior", style: FontApp.mainfont30.copyWith(color: ColorsApp.maincolor3, fontWeight: FontWeight.bold)),
-                                  ]),
-                            ),
-                            RichText(
-                              text: TextSpan(text: "definição",
-                                  style: FontApp.mainfont30.copyWith(
-                                    color: ColorsApp.maincolor3,),
-                                  children: <TextSpan>[
-                                    TextSpan(text: "da circunferência", style: FontApp.mainfont22.copyWith(color: ColorsApp.maincolor4)),
-                                  ]),
-                            ),
+                          RichText(
+                            text: TextSpan(
+                                text: "acarretando",
+                                style: FontApp.mainfont22.copyWith(
+                                  color: ColorsApp.maincolor4,
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: "maior",
+                                      style: FontApp.mainfont30.copyWith(
+                                          color: ColorsApp.maincolor3,
+                                          fontWeight: FontWeight.bold)),
+                                ]),
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: "definição",
+                                style: FontApp.mainfont30.copyWith(
+                                  color: ColorsApp.maincolor3,
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: "da circunferência",
+                                      style: FontApp.mainfont22.copyWith(
+                                          color: ColorsApp.maincolor4)),
+                                ]),
+                          ),
                           Text("do músculo.",
                               textAlign: TextAlign.start,
                               style: FontApp.mainfont24.copyWith(
                                 color: ColorsApp.maincolor4,
                               )),
-        
                         ],
                       ),
                     ],
@@ -157,22 +177,33 @@ class _HipertrofyInformationPageState extends State<HipertrofyInformationPage> {
                               style: FontApp.mainfont24.copyWith(
                                 color: ColorsApp.maincolor4,
                               )),
-                            RichText(
-                              text: TextSpan(text: "com o",
-                                  style: FontApp.mainfont22.copyWith(
-                                    color: ColorsApp.maincolor4,),
-                                  children: <TextSpan>[
-                                    TextSpan(text: "grupo muscular", style: FontApp.mainfont30.copyWith(color: ColorsApp.maincolor3, fontWeight: FontWeight.bold)),
-                                  ]),
-                            ),
-                            RichText(
-                              text: TextSpan(text: "trabalhado",
-                                  style: FontApp.mainfont30.copyWith(
-                                    color: ColorsApp.maincolor3, fontWeight: FontWeight.bold),
-                                  children: <TextSpan>[
-                                    TextSpan(text: ", assim como", style: FontApp.mainfont22.copyWith(color: ColorsApp.maincolor4)),
-                                  ]),
-                            ),
+                          RichText(
+                            text: TextSpan(
+                                text: "com o",
+                                style: FontApp.mainfont22.copyWith(
+                                  color: ColorsApp.maincolor4,
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: "grupo muscular",
+                                      style: FontApp.mainfont30.copyWith(
+                                          color: ColorsApp.maincolor3,
+                                          fontWeight: FontWeight.bold)),
+                                ]),
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: "trabalhado",
+                                style: FontApp.mainfont30.copyWith(
+                                    color: ColorsApp.maincolor3,
+                                    fontWeight: FontWeight.bold),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: ", assim como",
+                                      style: FontApp.mainfont22.copyWith(
+                                          color: ColorsApp.maincolor4)),
+                                ]),
+                          ),
                           Text("a resistência e",
                               textAlign: TextAlign.start,
                               style: FontApp.mainfont24.copyWith(
@@ -181,8 +212,8 @@ class _HipertrofyInformationPageState extends State<HipertrofyInformationPage> {
                           Text("individualidade biológica",
                               textAlign: TextAlign.start,
                               style: FontApp.mainfont30.copyWith(
-                                color: ColorsApp.maincolor3, fontWeight: FontWeight.bold
-                              )),
+                                  color: ColorsApp.maincolor3,
+                                  fontWeight: FontWeight.bold)),
                           Text("do praticante.",
                               textAlign: TextAlign.start,
                               style: FontApp.mainfont24.copyWith(
@@ -209,10 +240,12 @@ class _HipertrofyInformationPageState extends State<HipertrofyInformationPage> {
                         style: FontApp.mainfont36.copyWith(
                           color: ColorsApp.maincolor3,
                         )),
-                        const SizedBox(
-                        width: 10,
-                        ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     IconButton(
+
+
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -221,6 +254,7 @@ class _HipertrofyInformationPageState extends State<HipertrofyInformationPage> {
                         },
                         icon: Icon(Icons.play_circle_fill_rounded, color: ColorsApp.maincolor3, size: 50,)),
                         const SizedBox(width: 12,)
+
                   ],
                 )
               ],

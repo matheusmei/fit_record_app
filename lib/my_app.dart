@@ -7,6 +7,7 @@ import 'package:fit_record_app/feature/informations_training_pages/hipertrofy_in
 import 'package:fit_record_app/feature/informations_training_pages/resistence_information_page.dart';
 import 'package:fit_record_app/feature/informations_training_pages/strenght_information_page.dart';
 import 'package:fit_record_app/feature/login_pages/user_login_model.dart';
+import 'package:fit_record_app/feature/save_training/save_training_page.dart';
 
 import 'package:fit_record_app/feature/training_mode_page/training_mode_page.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
-      home: ExercisesPage2(),
+      home: SaveTrainingPage(),
 
     );
   }
