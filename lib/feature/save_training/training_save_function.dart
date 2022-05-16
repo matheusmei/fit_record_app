@@ -6,7 +6,7 @@ Future trainingSaveFunction(List<Map<String, dynamic>> exercises, String name,
     String serie, String repetition, restTime) async {
   final trainingDataBase = FirebaseFirestore.instance;
   final hive = Hive.box<String>("userTrainingBox");
-  final userId = hive.get("sid");
+  final userId = hive.get("id");
 
   if (userId == null || userId.isEmpty) {
     throw Exception('Erouu');

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
-      home: ExercisesPage2(),
+      home: LoginPage(),
 
     );
   }
