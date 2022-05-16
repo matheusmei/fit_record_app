@@ -1,7 +1,9 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
+import 'package:fit_record_app/feature/exercises_page/exercises_confirmation.dart';
 import 'package:fit_record_app/feature/save_training/training_save_function.dart';
+import 'package:fit_record_app/widgets/buttom_model.dart';
 import 'package:fit_record_app/widgets/componation/colors_app.dart';
 import 'package:fit_record_app/widgets/componation/exercices_card.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
@@ -279,17 +281,22 @@ class _ExercisesPage2State extends State<ExercisesPage2> {
                           shrinkWrap: true,
                           itemBuilder: (context, i) {
                             return CheckboxListTile(
-                                title: Text(abdominalExercises[i]["name"],
-                                    style: FontApp.mainfont16.copyWith(
-                                      color: ColorsApp.maincolor4,
-                                    )),
-                                value: abdominalExercises[i]["selected"],
-                                onChanged: (newValue) {
-                                  setState(() {
+                              title: Text(
+                                abdominalExercises[i]["name"],
+                                style: FontApp.mainfont16.copyWith(
+                                  color: ColorsApp.maincolor4,
+                                ),
+                              ),
+                              value: abdominalExercises[i]["selected"],
+                              onChanged: (newValue) {
+                                setState(
+                                  () {
                                     abdominalExercises[i]["selected"] =
                                         !abdominalExercises[i]["selected"];
-                                  });
-                                });
+                                  },
+                                );
+                              },
+                            );
                           },
                         )
                       ],
@@ -475,7 +482,59 @@ class _ExercisesPage2State extends State<ExercisesPage2> {
                           },
                         )
                       ],
-                    )
+                    ),
+                    ButtomModel(
+                        text: "Salvar Treino",
+                        onPressed: () {
+                          List<Map<String, dynamic>> selectedExercisesList = [];
+
+                          var result1 = abdominalExercises
+                              .where((element) => element["selected"] == true)
+                              .toList();
+                          var result2 = bicepsExercises
+                              .where((element) => element["selected"] == true)
+                              .toList();
+                          var result3 = dorsalExercises
+                              .where((element) => element["selected"] == true)
+                              .toList();
+                          var result4 = gluteoExercises
+                              .where((element) => element["selected"] == true)
+                              .toList();
+                          var result5 = ombroExercises
+                              .where((element) => element["selected"] == true)
+                              .toList();
+                          var result6 = peitoralExercises
+                              .where((element) => element["selected"] == true)
+                              .toList();
+                          var result7 = pernasExercises
+                              .where((element) => element["selected"] == true)
+                              .toList();
+                          var result8 = tricepsExercises
+                              .where((element) => element["selected"] == true)
+                              .toList();
+
+                          selectedExercisesList.addAll(result1);
+                          selectedExercisesList.addAll(result2);
+                          selectedExercisesList.addAll(result3);
+                          selectedExercisesList.addAll(result4);
+                          selectedExercisesList.addAll(result5);
+                          selectedExercisesList.addAll(result6);
+                          selectedExercisesList.addAll(result7);
+                          selectedExercisesList.addAll(result8);
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ExercisesConfirmation(
+                                myList: selectedExercisesList,
+                                saveName: nameTrainingController.text,
+                                serieChoiced: dropValue2.value,
+                                repetitionChoiced: dropValue.value,
+                                restTimeChoiced: dropValue3.value,
+                              ),
+                            ),
+                          );
+                        })
                   ],
                 )
               : const Center(
