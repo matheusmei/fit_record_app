@@ -45,7 +45,7 @@ class ExercisesConfirmation extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(height: 10),
+
                 Text("Nome do Treino",
                     style: FontApp.mainfont18.copyWith(
                       color: ColorsApp.maincolor3,
@@ -63,7 +63,7 @@ class ExercisesConfirmation extends StatelessWidget {
                         color: ColorsApp.maincolor3,
                       )),
                 ),
-                const SizedBox(height: 10),
+
                 Text("Número de séries",
                     style: FontApp.mainfont18.copyWith(
                       color: ColorsApp.maincolor3,
@@ -81,7 +81,7 @@ class ExercisesConfirmation extends StatelessWidget {
                         color: ColorsApp.maincolor3,
                       )),
                 ),
-                const SizedBox(height: 10),
+
                 Text("Número de Repetições",
                     style: FontApp.mainfont18.copyWith(
                       color: ColorsApp.maincolor3,
@@ -99,63 +99,18 @@ class ExercisesConfirmation extends StatelessWidget {
                         color: ColorsApp.maincolor3,
                       )),
                 ),
-                const SizedBox(height: 10),
-                Text("Tempo de Descanso",
-                    style: FontApp.mainfont18.copyWith(
 
-          child: Column(
-            children: [
-              const SizedBox(height: 10),
+                Text("Tempo de Descanso",
+                    style: FontApp.mainfont18),
               Container(
                 height: 100,
                 width: 200,
-                decoration: BoxDecoration(color: ColorsApp.maincolor4),
-                child: Text(
-                  saveName,
-                  style: FontApp.mainfont16.copyWith(
-                    color: ColorsApp.maincolor3,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                height: 100,
-                width: 200,
-                decoration: BoxDecoration(color: ColorsApp.maincolor4),
-                child: Text(
-                  serieChoiced,
-                  style: FontApp.mainfont16.copyWith(
-                    color: ColorsApp.maincolor3,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                height: 100,
-                width: 200,
-                decoration: BoxDecoration(color: ColorsApp.maincolor4),
-                child: Text(
-                  repetitionChoiced,
-                  style: FontApp.mainfont16.copyWith(
-                    color: ColorsApp.maincolor3,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                height: 100,
-                width: 200,
-                decoration: BoxDecoration(color: ColorsApp.maincolor4),
-                child: Text(restTimeChoiced,
-                    style: FontApp.mainfont16.copyWith(
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Text(restTimeChoiced,
-                      textAlign: TextAlign.center,
+                decoration: BoxDecoration(color: ColorsApp.maincolor4,borderRadius: BorderRadius.circular(10)),
+                child:Text(restTimeChoiced,                      textAlign: TextAlign.center,
                       style: FontApp.mainfont16.copyWith(
                         color: ColorsApp.maincolor3,
-                      )),
-                ),
-                const SizedBox(height: 10),
+                      ))),
+
                 ListView.builder(
                   itemCount: myList.length,
                   shrinkWrap: true,
@@ -176,60 +131,16 @@ class ExercisesConfirmation extends StatelessWidget {
                     );
                   }),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ButtomModel2(text: 'Editar', onPressed: () {}),
-                    const SizedBox(
-                      width: 120,
-                    ),
-                    ButtomModel2(text: 'Salvar', onPressed: () {})
-                  ],
-                ),
-              ],
-            ),
+                ButtomModel2(text: "Editar", onPressed: (){}),
 
-                      child: Text(
-                        myList[index]["name"],
-                        style: FontApp.mainfont16.copyWith(
-                          color: ColorsApp.maincolor3,
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-                itemCount: myList.length,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  ButtomModel(
-                      text: 'Editar',
-                      onPressed: () {
-                        Navigator.pop(
-                          context,
-                          const ExercisesPage2(),
-                        );
-                      }),
-                  ButtomModel(
-                    text: 'Salvar',
-                    onPressed: () {
-                      trainingSaveFunction(myList, saveName, serieChoiced,
-                          repetitionChoiced, restTimeChoiced);
-                    },
-                  )
+                ButtomModel2(text: "Salvar", onPressed: (){}),
+                
                 ],
-              ),
-            ],
+            ),
+  )
 
-          ),
-        ),
-      ),
-    );
+          )),
+        );
+    
   }
 }
