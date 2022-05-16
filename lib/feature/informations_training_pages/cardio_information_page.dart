@@ -1,4 +1,5 @@
 import 'package:bordered_text/bordered_text.dart';
+import 'package:fit_record_app/feature/exercises_page/exercises_page2.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/componation/colors_app.dart';
@@ -244,7 +245,7 @@ class _CardioInformationPageState extends State<CardioInformationPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ExercisesPage()));
+                                  builder: (context) => ExercisesPage2()));
                         },
                         icon: Icon(
                           Icons.play_circle_fill_rounded,
