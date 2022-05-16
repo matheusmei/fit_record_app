@@ -1,4 +1,5 @@
 import 'package:fit_record_app/feature/exercises_page/exercise_model.dart';
+import 'package:fit_record_app/feature/exercises_page/exercises_confirmation.dart';
 import 'package:fit_record_app/feature/exercises_page/exercises_page.dart';
 
 import 'package:fit_record_app/feature/home/home_page.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
-      home: SaveTrainingPage(),
+      home: ExercisesPage2(),
 
     );
   }
