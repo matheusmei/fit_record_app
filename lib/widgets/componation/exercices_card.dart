@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:fit_record_app/feature/exercises_page/muscular_group_model.dart';
 import 'package:fit_record_app/widgets/componation/colors_app.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
@@ -9,16 +11,14 @@ class ExercisesCard extends StatelessWidget {
   final AssetImage muscularGroupPhoto;
   final Function() onPressed;
   final List<Widget> cardChidren;
-  final Function(bool) onExpansionChanged;
 
-  const ExercisesCard(
-      {Key? key,
-      required this.muscularGroup,
-      required this.muscularGroupPhoto,
-      required this.onPressed,
-      required this.cardChidren,
-      required this.onExpansionChanged})
-      : super(key: key);
+  const ExercisesCard({
+    Key? key,
+    required this.muscularGroup,
+    required this.muscularGroupPhoto,
+    required this.onPressed,
+    required this.cardChidren,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,6 @@ class ExercisesCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: ExpansionTile(
-                    onExpansionChanged: onExpansionChanged,
                     title: Text(muscularGroup,
                         textAlign: TextAlign.center,
                         style: FontApp.mainfont30.copyWith(

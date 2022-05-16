@@ -244,21 +244,17 @@ class _HipertrofyInformationPageState extends State<HipertrofyInformationPage> {
                       width: 10,
                     ),
                     IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ExercisesPage2()));
-                      },
-                      icon: Icon(
-                        Icons.play_circle_fill_rounded,
-                        color: ColorsApp.maincolor3,
-                        size: 50,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 12,
-                    )
+
+
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ExercisesPage2()));
+                        },
+                        icon: Icon(Icons.play_circle_fill_rounded, color: ColorsApp.maincolor3, size: 50,)),
+                        const SizedBox(width: 12,)
+
                   ],
                 )
               ],
