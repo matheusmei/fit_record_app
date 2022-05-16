@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fit_record_app/feature/exercises_page/exercises_confirmation.dart';
 import 'package:fit_record_app/feature/exercises_page/exercises_page2.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:fit_record_app/widgets/componation/main_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import '../../widgets/componation/colors_app.dart';
 
@@ -13,6 +16,39 @@ class SaveTrainingPage extends StatefulWidget {
 }
 
 class _SaveTrainingPageState extends State<SaveTrainingPage> {
+// late Box<String> userTraining;
+// late String? userId;
+// late List<Map<ExercisesConfirmation, dynamic>> exerciseConfirmation;
+
+
+// @override
+// void initState(){
+// userTraining = Hive.box("userTrainingBox");
+// userId = userTraining.get("id");
+// getUserTraining();
+// super.initState();
+// }
+
+// Stream<List<Map<ExercisesConfirmation, dynamic>>> getUserTraining() async*{
+// exerciseConfirmation =[];
+// if (userId != null){
+// final docs = await FirebaseFirestore.instance
+// .collection('users')
+// .doc(userId)
+// .collection('saved_training')
+// .doc()
+// .get();
+//     exerciseConfirmation = docs.map(e) => ExercisesConfirmation.fromJson(e.data()).toList();
+
+
+// }
+
+
+// }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
