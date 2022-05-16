@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
 
-Future trainingSaveFunction(List<Map<String, dynamic>> exercises) async {
+Future trainingSaveFunction(List<Map<String, dynamic>> exercises, String name,
+    String serie, String repetition, restTime) async {
   final trainingDataBase = FirebaseFirestore.instance;
   final hive = Hive.box<String>("userTrainingBox");
   final userId = hive.get("sid");
@@ -15,5 +17,11 @@ Future trainingSaveFunction(List<Map<String, dynamic>> exercises) async {
       .doc(userId)
       .collection("saved_training")
       .doc()
-      .set({"name": "Meu Exercicio", "exercises": exercises});
+      .set({
+    "name": name,
+    "serie": serie,
+    "repetition": repetition,
+    "rest time": restTime,
+    "exercises": exercises,
+  });
 }

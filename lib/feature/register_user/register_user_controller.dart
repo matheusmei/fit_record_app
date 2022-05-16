@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:fit_record_app/feature/register_user/user_model.dart';
+import 'package:fit_record_app/widgets/componation/custom_dialog.dart';
 import 'package:flutter/cupertino.dart';
 
 Future registerUser(
@@ -8,6 +9,7 @@ Future registerUser(
   String lastname,
   String email,
   String password,
+  BuildContext context
 ) async {
   UserModel userModel;
   try {
@@ -40,7 +42,8 @@ Future registerUser(
       
     }
 
-    return UserModel.fromJson(response.data as Map<String, dynamic>);
+    return [UserModel.fromJson(response.data as Map<String, dynamic>),
+    CustomDialog(context, "Sucesso!", "Usuário Criado", "OK", () => Navigator.pop(context),)];
   } on DioError catch (e) {
     debugPrint("${e.response}");
   }

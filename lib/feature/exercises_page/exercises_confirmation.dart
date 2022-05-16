@@ -1,3 +1,5 @@
+import 'package:fit_record_app/feature/exercises_page/exercises_page2.dart';
+import 'package:fit_record_app/feature/save_training/training_save_function.dart';
 import 'package:fit_record_app/widgets/buttom_model.dart';
 import 'package:fit_record_app/widgets/buttom_model2.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
@@ -100,14 +102,52 @@ class ExercisesConfirmation extends StatelessWidget {
                 const SizedBox(height: 10),
                 Text("Tempo de Descanso",
                     style: FontApp.mainfont18.copyWith(
-                      color: ColorsApp.maincolor3,
-                    )),
-                Container(
-                  alignment: Alignment.center,
-                  height: 40,
-                  width: 200,
-                  decoration: BoxDecoration(
-                      color: ColorsApp.maincolor4,
+
+          child: Column(
+            children: [
+              const SizedBox(height: 10),
+              Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(color: ColorsApp.maincolor4),
+                child: Text(
+                  saveName,
+                  style: FontApp.mainfont16.copyWith(
+                    color: ColorsApp.maincolor3,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(color: ColorsApp.maincolor4),
+                child: Text(
+                  serieChoiced,
+                  style: FontApp.mainfont16.copyWith(
+                    color: ColorsApp.maincolor3,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(color: ColorsApp.maincolor4),
+                child: Text(
+                  repetitionChoiced,
+                  style: FontApp.mainfont16.copyWith(
+                    color: ColorsApp.maincolor3,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(color: ColorsApp.maincolor4),
+                child: Text(restTimeChoiced,
+                    style: FontApp.mainfont16.copyWith(
                       borderRadius: BorderRadius.circular(10)),
                   child: Text(restTimeChoiced,
                       textAlign: TextAlign.center,
@@ -151,6 +191,42 @@ class ExercisesConfirmation extends StatelessWidget {
                 ),
               ],
             ),
+
+                      child: Text(
+                        myList[index]["name"],
+                        style: FontApp.mainfont16.copyWith(
+                          color: ColorsApp.maincolor3,
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+                itemCount: myList.length,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: [
+                  ButtomModel(
+                      text: 'Editar',
+                      onPressed: () {
+                        Navigator.pop(
+                          context,
+                          const ExercisesPage2(),
+                        );
+                      }),
+                  ButtomModel(
+                    text: 'Salvar',
+                    onPressed: () {
+                      trainingSaveFunction(myList, saveName, serieChoiced,
+                          repetitionChoiced, restTimeChoiced);
+                    },
+                  )
+                ],
+              ),
+            ],
+
           ),
         ),
       ),
