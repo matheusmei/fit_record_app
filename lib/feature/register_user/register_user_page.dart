@@ -123,6 +123,7 @@ class RegisterUserPage extends StatelessWidget {
                         lastnameController.text,
                         emailController.text.trim(),
                         passwordController.text,
+                        context,
                       ).then(
                         (value) => Navigator.pushReplacement(
                           context,
