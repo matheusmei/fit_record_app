@@ -1,9 +1,11 @@
+import 'package:bordered_text/bordered_text.dart';
 import 'package:fit_record_app/feature/exercises_page/exercises_page2.dart';
 import 'package:fit_record_app/feature/save_training/training_save_function.dart';
 import 'package:fit_record_app/widgets/buttom_model.dart';
 import 'package:fit_record_app/widgets/buttom_model2.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import '../../widgets/componation/colors_app.dart';
 
@@ -12,10 +14,14 @@ class ExercisesConfirmation extends StatelessWidget {
   final String serieChoiced;
   final String repetitionChoiced;
   final String restTimeChoiced;
+  
 
   final List<Map<String, dynamic>> myList;
 
-  const ExercisesConfirmation({
+
+  
+
+ ExercisesConfirmation({
     Key? key,
     required this.myList,
     required this.saveName,
@@ -45,7 +51,31 @@ class ExercisesConfirmation extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-
+                Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.zero,
+                          child: BorderedText(
+                            strokeWidth: 4.0,
+                            strokeColor: ColorsApp.maincolor2,
+                            child:
+                                Text("Fit Record", style: FontApp.logotitle2),
+                          ),
+                        ),
+                        Container(
+                          height: 80,
+                          width: 80,
+                          alignment: Alignment.center,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("lib/images/logo.png"),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                 Text("Nome do Treino",
                     style: FontApp.mainfont18.copyWith(
                       color: ColorsApp.maincolor3,
@@ -63,7 +93,6 @@ class ExercisesConfirmation extends StatelessWidget {
                         color: ColorsApp.maincolor3,
                       )),
                 ),
-
                 Text("Número de séries",
                     style: FontApp.mainfont18.copyWith(
                       color: ColorsApp.maincolor3,
@@ -81,7 +110,6 @@ class ExercisesConfirmation extends StatelessWidget {
                         color: ColorsApp.maincolor3,
                       )),
                 ),
-
                 Text("Número de Repetições",
                     style: FontApp.mainfont18.copyWith(
                       color: ColorsApp.maincolor3,
@@ -99,18 +127,29 @@ class ExercisesConfirmation extends StatelessWidget {
                         color: ColorsApp.maincolor3,
                       )),
                 ),
-
-                Text("Tempo de Descanso",
-                    style: FontApp.mainfont18),
-              Container(
-                height: 100,
-                width: 200,
-                decoration: BoxDecoration(color: ColorsApp.maincolor4,borderRadius: BorderRadius.circular(10)),
-                child:Text(restTimeChoiced,                      textAlign: TextAlign.center,
-                      style: FontApp.mainfont16.copyWith(
-                        color: ColorsApp.maincolor3,
-                      ))),
-
+                Text(
+                  "Tempo de Descanso",
+                  style:
+                      FontApp.mainfont18.copyWith(color: ColorsApp.maincolor3),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: ColorsApp.maincolor4,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Text(
+                    restTimeChoiced,
+                    textAlign: TextAlign.center,
+                    style: FontApp.mainfont16.copyWith(
+                      color: ColorsApp.maincolor3,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
                 ListView.builder(
                   itemCount: myList.length,
                   shrinkWrap: true,
@@ -131,16 +170,29 @@ class ExercisesConfirmation extends StatelessWidget {
                     );
                   }),
                 ),
-                ButtomModel2(text: "Editar", onPressed: (){}),
-
-                ButtomModel2(text: "Salvar", onPressed: (){}),
-                
-                ],
+                const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtomModel2(text: "Editar", onPressed: () {}),
+                    const SizedBox(
+                      width: 100,
+                    ),
+                    ButtomModel2(
+                        text: "Salvar",
+                        onPressed: () {
+                          trainingSaveFunction(myList, saveName, serieChoiced,
+                              repetitionChoiced, restTimeChoiced);
+                        }),
+                  ],
+                ),
+              ],
             ),
-  )
-
-          )),
-        );
-    
+          ),
+        ),
+      ),
+    );
   }
 }
