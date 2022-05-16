@@ -1,3 +1,4 @@
+import 'package:fit_record_app/feature/exercises_page/exercises_page2.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:fit_record_app/widgets/componation/main_text_field.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,14 @@ class _SaveTrainingPageState extends State<SaveTrainingPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ExercisesPage2(),
+                        ),
+                      );
+                    },
                     backgroundColor: ColorsApp.maincolor3,
                     child: Icon(
                       Icons.add,
@@ -116,9 +124,6 @@ class _SaveTrainingPageState extends State<SaveTrainingPage> {
                   )
                 ],
               )
-
-
-
             ],
           ),
         ),
