@@ -1,5 +1,6 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:fit_record_app/feature/exercises_page/exercises_page2.dart';
+import 'package:fit_record_app/feature/save_training/save_training_page.dart';
 import 'package:fit_record_app/feature/save_training/training_save_function.dart';
 import 'package:fit_record_app/widgets/buttom_model.dart';
 import 'package:fit_record_app/widgets/buttom_model2.dart';
@@ -14,14 +15,10 @@ class ExercisesConfirmation extends StatelessWidget {
   final String serieChoiced;
   final String repetitionChoiced;
   final String restTimeChoiced;
-  
 
   final List<Map<String, dynamic>> myList;
 
-
-  
-
- ExercisesConfirmation({
+  ExercisesConfirmation({
     Key? key,
     required this.myList,
     required this.saveName,
@@ -52,30 +49,29 @@ class ExercisesConfirmation extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.zero,
-                          child: BorderedText(
-                            strokeWidth: 4.0,
-                            strokeColor: ColorsApp.maincolor2,
-                            child:
-                                Text("Fit Record", style: FontApp.logotitle2),
-                          ),
-                        ),
-                        Container(
-                          height: 80,
-                          width: 80,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("lib/images/logo.png"),
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                      ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.zero,
+                      child: BorderedText(
+                        strokeWidth: 4.0,
+                        strokeColor: ColorsApp.maincolor2,
+                        child: Text("Fit Record", style: FontApp.logotitle2),
+                      ),
                     ),
+                    Container(
+                      height: 80,
+                      width: 80,
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("lib/images/logo.png"),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 Text("Nome do Treino",
                     style: FontApp.mainfont18.copyWith(
                       color: ColorsApp.maincolor3,
@@ -184,7 +180,16 @@ class ExercisesConfirmation extends StatelessWidget {
                         text: "Salvar",
                         onPressed: () {
                           trainingSaveFunction(myList, saveName, serieChoiced,
-                              repetitionChoiced, restTimeChoiced);
+                                  repetitionChoiced, restTimeChoiced)
+                              .then(
+                            (value) => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SaveTrainingPage(),
+                              ),
+                            ),
+                          );
+                          ;
                         }),
                   ],
                 ),

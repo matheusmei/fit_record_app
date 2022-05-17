@@ -99,9 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                     if (emailController.text.isNotEmpty == true &&
                         passwordController.text.isNotEmpty == true) {
                       return await loginUser(emailController.text.trim(),
-                              passwordController.text,
-                              context,
-                              saveTrainingBox)
+                              passwordController.text, context, saveTrainingBox)
                           .then(
                         (value) => Navigator.push(
                           context,
@@ -140,14 +138,18 @@ class _LoginPageState extends State<LoginPage> {
                     InkWell(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterUserPage()));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegisterUserPage(),
+                          ),
+                        );
                       },
-                      child: Text("Registre-se",
-                          style: FontApp.mainfont16.copyWith(
-                            color: ColorsApp.maincolor3,
-                          )),
+                      child: Text(
+                        "Registre-se",
+                        style: FontApp.mainfont16.copyWith(
+                          color: ColorsApp.maincolor3,
+                        ),
+                      ),
                     )
                   ],
                 ),

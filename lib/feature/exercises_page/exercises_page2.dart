@@ -8,6 +8,7 @@ import 'package:fit_record_app/widgets/componation/colors_app.dart';
 import 'package:fit_record_app/widgets/componation/exercices_card.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:fit_record_app/widgets/componation/main_text_field.dart';
+import 'package:fit_record_app/widgets/componation/training_saved_card.dart';
 import 'package:flutter/material.dart';
 
 class ExercisesPage2 extends StatefulWidget {
@@ -535,6 +536,7 @@ class _ExercisesPage2State extends State<ExercisesPage2> {
                             ),
                           );
                         })
+                       
                   ],
                 )
               : const Center(

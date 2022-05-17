@@ -18,6 +18,8 @@ import 'feature/login_pages/login_page.dart';
 
 import 'package:flutter/material.dart';
 
+import 'widgets/componation/training_saved_card.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fit Record',
-      home: LoginPage(),
+      home: ExercisesPage2(),
 
     );
   }

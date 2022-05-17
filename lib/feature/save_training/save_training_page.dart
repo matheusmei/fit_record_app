@@ -3,6 +3,7 @@ import 'package:fit_record_app/feature/exercises_page/exercises_confirmation.dar
 import 'package:fit_record_app/feature/exercises_page/exercises_page2.dart';
 import 'package:fit_record_app/widgets/componation/font_app.dart';
 import 'package:fit_record_app/widgets/componation/main_text_field.dart';
+import 'package:fit_record_app/widgets/componation/training_saved_card.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -16,38 +17,31 @@ class SaveTrainingPage extends StatefulWidget {
 }
 
 class _SaveTrainingPageState extends State<SaveTrainingPage> {
-// late Box<String> userTraining;
-// late String? userId;
-// late List<Map<ExercisesConfirmation, dynamic>> exerciseConfirmation;
+late Box<String> userTraining;
+late String? userId;
+late List<Map<ExercisesConfirmation, dynamic>> exerciseConfirmation;
 
 
-// @override
-// void initState(){
-// userTraining = Hive.box("userTrainingBox");
-// userId = userTraining.get("id");
-// getUserTraining();
-// super.initState();
-// }
+@override
+void initState(){
+userTraining = Hive.box("userTrainingBox");
+userId = userTraining.get("id");
+getUserTraining();
+super.initState();
+}
 
-// Stream<List<Map<ExercisesConfirmation, dynamic>>> getUserTraining() async*{
-// exerciseConfirmation =[];
-// if (userId != null){
-// final docs = await FirebaseFirestore.instance
-// .collection('users')
-// .doc(userId)
-// .collection('saved_training')
-// .doc()
-// .get();
-//     exerciseConfirmation = docs.map(e) => ExercisesConfirmation.fromJson(e.data()).toList();
+Stream<List<Map<ExercisesConfirmation, dynamic>>> getUserTraining() async*{
+exerciseConfirmation =[];
+if (userId != null){
+final docs = await FirebaseFirestore.instance
+.collection('users')
+.doc(userId)
+.collection('saved_training')
+.doc()
+.get();
+}
 
-
-// }
-
-
-// }
-
-
-
+}
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +60,22 @@ class _SaveTrainingPageState extends State<SaveTrainingPage> {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Column(
+          body:StreamBuilder<List<Map<ExercisesConfirmation, dynamic>>>(
+            stream: getUserTraining(),
+            builder: ((context, snapshot){
+              if (snapshot.connectionState == ConnectionState.active &&
+              snapshot.hasData){
+                return TrainingSavedCard(trainingName: snapshot.data!.name!,
+                 repetitionCount: snapshot.data.repetition!, 
+                 serieCount: serieCount,
+                  restTimeCount: restTimeCount, 
+                  onPressed: (){}, 
+                  cardChidren: myList)
+              }
+            }),
+          ),
+          
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
